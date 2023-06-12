@@ -104,23 +104,20 @@ function getBoostClipRect(
         x: chart.plotLeft,
         y: chart.plotTop,
         width: chart.plotWidth,
-        height: chart.plotHeight
+        height: chart.navigator ?
+            chart.navigator.top + chart.navigator.height - chart.plotTop :
+            chart.plotHeight
     };
 
-    if (target === chart) {
-        const verticalAxes =
-            chart.inverted ? chart.xAxis : chart.yAxis; // #14444
+    const verticalAxes = chart.inverted ? chart.xAxis : chart.yAxis; // #14444
 
-        if (verticalAxes.length <= 1) {
-            clipBox.y = Math.min(verticalAxes[0].pos, clipBox.y);
-            clipBox.height = (
-                verticalAxes[0].pos -
-                chart.plotTop +
-                verticalAxes[0].len
-            );
-        } else {
-            clipBox.height = chart.plotHeight;
-        }
+    if (target === chart && verticalAxes.length <= 1) {
+        clipBox.y = Math.min(verticalAxes[0].pos, clipBox.y);
+        clipBox.height = (
+            verticalAxes[0].pos -
+            chart.plotTop +
+            verticalAxes[0].len
+        );
     }
 
     return clipBox;
