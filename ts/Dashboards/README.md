@@ -72,7 +72,7 @@ Edit Mode allows the user to edit the dashboard by adding, removing and editing 
 Find more information in the [Edit Mode documentation](https://highcharts.com/docs/dashboards/edit-mode).
 
 ## Your first dashboard
-To create your dashboard, you first have to import the Dashboards package.  
+To create your dashboard, you first have to import the Dashboards package.
 You also need a placeholder for your dashboard. In this example we will use a div with the id `container`.
 ``` HTML
     <script src="https://code.highcharts.com/dashboards/dashboards.js"></script>
@@ -101,10 +101,6 @@ Your dashboard can now be created:
             elements: [
                 {
                     tagName: 'h1',
-                    style: {
-                        height: '400px',
-                        'text-align': 'center'
-                    },
                     textContent: 'Your first dashboard'
                 }
             ]
